@@ -1,0 +1,7 @@
+.rootWrap {
+    width: 66%;
+    margin: 1.5vw auto 1.5vw auto;
+    background-color: #FFFFFF;
+    border-radius: 1vw;
+    display: flex;
+}
