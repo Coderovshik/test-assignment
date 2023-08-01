@@ -5,8 +5,8 @@ interface props {
     label: string;
     placeholder: string | undefined;
     name: string;
-    tip: string | undefined;
-    defaultValue: string | undefined;
+    tip?: string;
+    defaultValue?: string;
     onChange: (event: any) => void;
 }
 
@@ -21,7 +21,7 @@ export default function TextField({ label, placeholder, name, tip, defaultValue,
                 defaultValue={defaultValue}
                 onChange={onChange}
             />
-            <span className={styles.tip}>{tip}</span>
+            {tip && <span className={styles.tip}>{tip}</span>}
         </label>
     );
 }

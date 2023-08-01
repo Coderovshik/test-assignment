@@ -1,24 +1,36 @@
 import { useState } from 'react';
 import { Form } from 'react-router-dom';
 import TextField from '../components/textField';
+import User from '../storage';
 
 // styles
 import styles from '../styles/start.module.css';
 
-let textFields = [
+const textFields = [
     {
         label: "Номер телефона",
         placeholder: "+7 999 999-99-99",
         name: "phoneNumber",
-        tip: undefined,
-        defaultValue: undefined
     },
     {
         label: "Email",
         placeholder: "tim.jennings@example.com",
         name: "email",
-        tip: undefined,
-        defaultValue: undefined
+    },
+];
+
+const contacts = [
+    {
+        caption: "Telegram",
+        link: "@Am0gusSus",
+    },
+    {
+        caption: "GitHub",
+        link: "https://github.com/Coderovshik",
+    },
+    {
+        caption: "Resume",
+        link: "",
     },
 ];
 
@@ -28,10 +40,21 @@ export default function Start() {
     return(
         <div className={styles.start}>
             <div className={styles.header}>
-
+                <span>ПУ</span>
+                <div>
+                    <h1>Петр Удинцев</h1>
+                    <p>
+                        {contacts.map((contact) => 
+                            <a
+                                href={contact.link}
+                                target='_blank'
+                            >{contact.caption}</a>
+                        )}
+                    </p>
+                </div>
             </div>
             <hr />
-            <Form >
+            <Form method='post' action='/form'>
                 {textFields.map((field, index) => 
                     <TextField 
                         {...field} 
@@ -43,7 +66,11 @@ export default function Start() {
                         }}
                     />
                 )}
-                <button type='submit' />
+                <button 
+                    id='button-start' 
+                    type='submit'
+                    onClick={() => User.step = 1}
+                >Начать</button>
             </Form>
         </div>
     );
