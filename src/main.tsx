@@ -10,5 +10,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 )
 // huge changes
-//change 1
-//change 2
+// cringe
