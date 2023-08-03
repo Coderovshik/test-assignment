@@ -35,3 +35,5 @@ export default class User {
         this.data = { ...newData, ...this.data };
     }
 }
+
+//amogus
