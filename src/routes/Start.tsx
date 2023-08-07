@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form } from 'react-router-dom';
+import { Form, redirect } from 'react-router-dom';
 import TextField from '../components/textField';
 import User from '../storage';
 
@@ -34,6 +34,13 @@ const contacts = [
     },
 ];
 
+export async function action({ request } : { request: Request }) {
+    const formData = await request.formData();
+    const updates = Object.fromEntries(formData);
+    User.write(updates);
+    return redirect("/form");
+}
+
 export default function Start() {
     const [fields, setFields] = useState(Array(textFields.length).fill(""));
 
@@ -54,7 +61,7 @@ export default function Start() {
                 </div>
             </div>
             <hr />
-            <Form method='post' action='/form'>
+            <Form method='post'>
                 {textFields.map((field, index) => 
                     <TextField 
                         {...field} 
