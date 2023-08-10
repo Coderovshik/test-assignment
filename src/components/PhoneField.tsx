@@ -1,5 +1,5 @@
 import { useField } from 'formik';
-import { ChangeEvent, ChangeEventHandler, ClipboardEventHandler, FormEventHandler, KeyboardEventHandler, SyntheticEvent, useRef } from 'react';
+import { ChangeEventHandler, ClipboardEventHandler, KeyboardEventHandler } from 'react';
 import { getInputNumbersValue, applyMask } from '../utils/phoneMask';
 
 // styles
@@ -10,8 +10,6 @@ interface props {
     placeholder: string | undefined;
     name: string;
     tip?: string;
-    type: string;
-    mask: any;
 }
 
 export default function PhoneField({ label, tip, name, placeholder }: props) {
