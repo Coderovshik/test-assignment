@@ -1,3 +1,5 @@
+import { useField } from 'formik';
+
 // styles
 import styles from '../styles/textField.module.css';
 
@@ -6,21 +8,26 @@ interface props {
     placeholder: string | undefined;
     name: string;
     tip?: string;
-    defaultValue?: string;
-    onChange: (event: any) => void;
+    type: string;
 }
 
-export default function TextField({ label, placeholder, name, tip, defaultValue, onChange }: props) {
+export default function TextField({ label, tip, name, placeholder, type }: props) {
+    const [field, meta] = useField({
+        name: name,
+        placeholder: placeholder,
+        type: type
+    });
+
     return (
         <label className={styles.wrap}>
             <span className={styles.label}>{label}</span>
             <input
-                className={styles.field}
+                className={`${styles.field}`}
                 placeholder={placeholder}
-                name={name}
-                defaultValue={defaultValue}
-                onChange={onChange}
+                {...field}
             />
+            {meta.touched && meta.error &&
+                <span className={styles.errorMessage}>{meta.error}</span>}
             {tip && <span className={styles.tip}>{tip}</span>}
         </label>
     );
