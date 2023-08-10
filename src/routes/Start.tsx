@@ -72,7 +72,7 @@ export default function Start() {
                         <PhoneField
                             label='Номер телефона'
                             name='tel'
-                            placeholder='+7 999 999-99-99'
+                            placeholder='+7 (999) 999-99-99' 
                         />
                         <TextField
                             label='Email'
