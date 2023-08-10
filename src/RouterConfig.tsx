@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Root from './routes/Root';
 import MainForm, { action as mainFormAction } from './routes/MainForm';
-import Start from './routes/Start';
+import Start, { action as startAction } from './routes/Start';
 
 export const router = createBrowserRouter([
     {
@@ -10,7 +10,8 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Start />
+                element: <Start />,
+                action: startAction
             },
             {
                 path: '/form',
